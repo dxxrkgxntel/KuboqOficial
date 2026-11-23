@@ -1,0 +1,5 @@
+KUBOQ - INICIO DUAL
+Configuración: config.json (sin .env).
+Local Windows: INICIAR-LOCAL.bat
+FadeHost: npm ci y npm start
+Instrucciones: CONFIGURACION-LOCAL-Y-FADEHOST.md

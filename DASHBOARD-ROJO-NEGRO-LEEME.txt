@@ -1,0 +1,17 @@
+KUBOQ — DASHBOARD MODULAR
+=======================================
+
+Diseño del panel renovado en negro, carmesí y rojo luminoso.
+
+- Resumen con nombre, cifras y estado reales del servidor conectado.
+- Navegación generada con las categorías registradas por el bot. Cada categoría abre su propia pantalla con acciones, ajustes y consultas disponibles.
+- Edición de bienvenida, despedida, tickets, verificación, aplicaciones y niveles a partir de sus valores guardados; cambio de evento sin mezclar los textos anteriores.
+- Vista previa en vivo del mensaje, embed, botones y valores antes de aplicar cambios. La configuración general y la apariencia también tienen previsualización.
+- Catálogo completo de comandos con búsqueda, selección de canal y respuesta en el panel.
+- Centro de música con controles de reproducción, cola, volumen, canal, ajustes y un resumen previo de lo que se va a guardar.
+- Apariencia y configuración adaptadas al diseño en escritorio y móvil; ajustes del bot concentrados en Configuración.
+- Los módulos de demostración que no corresponden a funciones del bot se han retirado.
+
+La lista detallada de comandos y eventos figura en AUDITORIA-DASHBOARD.md.
+Sigue los pasos de README.md y FADEHOST-INSTALACION.txt para ejecutar el bot.
+Las pruebas de interfaz utilizan datos simulados; comprueba OAuth, publicación de paneles y permisos con tu servidor al instalarlo. Una vista previa muestra el borrador: los paneles que ya están publicados en Discord pueden requerir publicarse de nuevo para actualizarse.

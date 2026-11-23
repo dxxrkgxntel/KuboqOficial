@@ -1,0 +1,68 @@
+{
+  "discord": {
+    "token": "",
+    "clientId": ""
+  },
+  "mongodb": {
+    "uri": "",
+    "database": "club247",
+    "importPath": "./db.json"
+  },
+  "identity": {
+    "name": "Kuboq",
+    "color": "#FF3159",
+    "description": "Bot multiservidor",
+    "logoUrl": "",
+    "defaultStatus": [
+      "Únete al Discord",
+      "Kuboq",
+      "Pasa una Navidad bonita 🎅🎄"
+    ],
+    "rotationSeconds": 15
+  },
+  "integrations": {
+    "pexelsKey": "",
+    "openaiKey": "",
+    "imageModel": "gpt-image-1"
+  },
+  "music": {
+    "ytDlpPath": "auto",
+    "panelImageUrl": "",
+    "accentColor": "#FF3159",
+    "guildChannels": {},
+    "players": [
+      {
+        "name": "Music 1",
+        "token": "",
+        "enabled": true
+      },
+      {
+        "name": "Music 2",
+        "token": "",
+        "enabled": true
+      },
+      {
+        "name": "Music 3",
+        "token": "",
+        "enabled": true
+      },
+      {
+        "name": "Music 4",
+        "token": "",
+        "enabled": true
+      },
+      {
+        "name": "Music 5",
+        "token": "",
+        "enabled": true
+      }
+    ]
+  },
+  "dashboard": {
+    "port": 3000,
+    "redirectUri": "auto",
+    "clientSecret": "",
+    "sessionSecret": "",
+    "host": "0.0.0.0"
+  }
+}

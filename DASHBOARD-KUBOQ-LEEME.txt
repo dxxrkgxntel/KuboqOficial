@@ -1,0 +1,22 @@
+KUBOQ — DASHBOARD MODULAR
+=======================================
+
+Dashboard de Kuboq con identidad visual roja y negra y configuración agrupada por módulo.
+
+- Resumen con nombre, cifras y estado reales del servidor conectado.
+- Navegación generada con las categorías registradas por el bot. Cada categoría abre su propia pantalla con acciones, ajustes y consultas disponibles.
+- Edición directa de bienvenida, despedida, autoroles, tickets y verificación a partir de los valores que consume el bot. Aplicaciones y niveles conservan sus formularios enlazados a comandos.
+- Vista previa en vivo del mensaje, embed, botones y valores antes de aplicar cambios. La configuración general y la apariencia también tienen previsualización.
+- Explorar funciones abre un directorio de módulos. La ejecución de comandos se encuentra en el módulo correspondiente.
+- Bienvenidas y Salidas usan editores completos: canal, activación, título, descripción, color, imagen, miniatura, autor, pie, texto superior y mensaje privado de bienvenida. Las herramientas avanzadas conservan el acceso a los comandos registrados.
+- Tickets, verificación y autoroles tienen formularios directos con guardado por servidor; los comandos para publicar paneles, revisar y aplicar roles quedan accesibles desde sus herramientas.
+- Centro de música con controles de reproducción, cola, volumen, canal, ajustes y un resumen previo de lo que se va a guardar.
+- Apariencia y configuración adaptadas al diseño en escritorio y móvil; ajustes del bot concentrados en Configuración.
+- Los módulos de demostración que no corresponden a funciones del bot se han retirado.
+- Bienvenidas, Salidas, Tickets, Verificación y Postulaciones ofrecen Embed, Components V2, Card PNG y Texto normal con vista previa en vivo. El bot usa el formato elegido al enviar el próximo mensaje. Los botones y menús de los paneles siguen operativos. En paneles ya publicados, vuelve a publicar para cambiar el formato. Las cards necesitan permiso Adjuntar archivos y dibujan título, texto, color y pie; no descargan imágenes externas al PNG.
+- Tras revisar el recorrido en video: Cumpleaños y Respuestas automáticas tienen editores propios y los mismos cuatro formatos conectados al envío del bot. Los comandos avanzados están a la vista en una barra de selección; los ajustes muestran el cambio previsto en lugar de fingir un mensaje de Discord. Se retiró el canal de ejecución duplicado de los formularios de configuración y se filtran los canales según su tipo.
+- La portada abre Discord OAuth en una ventana emergente. Al autorizar, muestra brevemente el avatar y @usuario de la cuenta real y se cierra sola; la pestaña original verifica la sesión y abre la elección de servidor. Se conserva el acceso en la misma pestaña como alternativa si el navegador bloquea la ventana.
+
+La lista detallada de comandos y eventos figura en AUDITORIA-DASHBOARD.md.
+Sigue los pasos de README.md y FADEHOST-INSTALACION.txt para ejecutar el bot.
+Las pruebas de interfaz utilizan datos simulados; comprueba OAuth, publicación de paneles y permisos con tu servidor al instalarlo. Para sustituir una instalación anterior, reemplaza todos los archivos del proyecto, reinicia el proceso Node y recarga el navegador. La versión de CSS/JS cambia para invalidar la caché. Una vista previa muestra el borrador: los paneles que ya están publicados en Discord pueden requerir publicarse de nuevo para actualizarse.

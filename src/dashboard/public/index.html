@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b090c">
+  <meta name="description" content="Panel de administración de Kuboq">
+  <title>Kuboq · Panel del servidor</title>
+  <link rel="icon" href="/assets/brand/kuboq-logo.png" type="image/png">
+    <link rel="stylesheet" href="/assets/dashboard.css?v=kuboq-6">
+</head>
+<body class="server-selection">
+<div class="app">
+  <aside class="sidebar" id="sidebar" aria-label="Navegación del servidor">
+    <div class="brand"><div class="brand-mark"><img src="/assets/brand/kuboq-logo.png" alt=""></div><div class="brand-copy"><div class="brand-name">Kuboq</div><div class="brand-caption">Panel de control</div></div></div>
+    <div class="active-server"><span class="eyebrow">Servidor activo</span><div class="active-server-main"><span class="active-server-icon" id="activeServerIcon">24</span><strong id="activeServerName">Seleccionando servidor</strong></div><button type="button" id="changeServer" class="server-change">↗ &nbsp;Cambiar servidor</button></div>
+    <label class="searchbox"><input id="moduleSearch" type="search" placeholder="Buscar módulos y ajustes…" aria-label="Buscar módulos y ajustes"></label>
+    <nav class="nav" id="nav" aria-label="Funciones del bot"></nav>
+    <div class="sidebar-bottom"><span class="connection-dot"></span> Conectado a Kuboq</div>
+  </aside>
+  <div id="mobileOverlay" class="mobile-overlay"></div>
+  <main class="main">
+    <header class="topbar"><button class="icon-button mobile-menu" id="mobileMenu" type="button" aria-label="Abrir menú">☰</button><div class="page-heading"><span class="eyebrow" id="topServerName">DASHBOARD</span><h1 id="crumbPage">Panel</h1></div><div class="top-actions"><button type="button" class="quick-open" id="quickOpen" aria-label="Buscar funciones y comandos"><span aria-hidden="true">⌕</span><span>Buscar</span><kbd>Ctrl K</kbd></button><button type="button" class="motion-toggle" id="motionToggle" aria-pressed="true">✦ &nbsp;Animación activa</button><div class="session-chip"><span class="session-avatar" id="sessionAvatar">K</span><span><small>Sesión iniciada como</small><strong id="profileName">Discord</strong></span><button type="button" id="sessionLogout" title="Cerrar sesión" aria-label="Cerrar sesión">↪</button></div></div></header>
+    <section class="content" id="content" aria-live="polite"><div class="server-loading" role="status"><div class="loading-emblem"><span class="brand-mark"><img src="/assets/brand/kuboq-logo.png" alt=""></span><span class="loading-orbit" aria-hidden="true"></span></div><h2>Preparando tu dashboard</h2><p>Cargando los servidores que puedes administrar…</p></div></section>
+  </main>
+</div>
+<div class="toast-stack" id="toastStack" aria-live="polite"></div>
+<div class="quick-switcher" id="quickSwitcher" hidden><div class="quick-dialog" role="dialog" aria-modal="true" aria-labelledby="quickTitle"><div class="quick-head"><span class="quick-symbol" aria-hidden="true">⌕</span><div><strong id="quickTitle">Buscar en Kuboq</strong><small>Funciones y comandos disponibles en este servidor</small></div><button type="button" id="quickClose" aria-label="Cerrar búsqueda">×</button></div><label class="quick-input-wrap"><span class="sr-only">Buscar función o comando</span><input id="quickInput" type="search" role="combobox" aria-controls="quickResults" aria-expanded="true" aria-autocomplete="list" autocomplete="off" placeholder="Busca: bienvenidas, tickets, seguridad…"></label><div id="quickResults" class="quick-results" role="listbox" aria-label="Resultados de búsqueda"></div><div class="quick-footer"><span>↑ ↓ Navegar</span><span>↵ Abrir</span><span>Esc Cerrar</span></div></div></div>
+<script src="/assets/integration.js?v=kuboq-7" defer></script>
+</body>
+</html>

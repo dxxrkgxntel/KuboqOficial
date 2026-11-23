@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10090d">
+  <meta name="description" content="Consulta tus logros y el progreso de tu comunidad en Kuboq.">
+  <title>Logros · Kuboq</title>
+  <link rel="icon" href="/assets/brand/kuboq-logo.png">
+  <link rel="stylesheet" href="/assets/achievements.css?v=2">
+  <script src="/assets/achievements.js?v=2" defer></script>
+</head>
+<body>
+  <div class="page-glow page-glow-one" aria-hidden="true"></div>
+  <div class="page-glow page-glow-two" aria-hidden="true"></div>
+  <main class="shell">
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="Kuboq, inicio">
+        <img src="/assets/brand/kuboq-logo.png" alt="" width="44" height="44">
+        <span><strong>Kuboq</strong><small>Centro de logros</small></span>
+      </a>
+      <div class="server-chip" id="serverChip" hidden>
+        <img id="serverIcon" alt="" hidden>
+        <span id="serverName">Cargando servidor…</span>
+      </div>
+      <a class="login-button" id="loginTop" href="/auth/discord" hidden>Iniciar sesión <span aria-hidden="true">↗</span></a>
+      <div class="user-chip" id="userChip" hidden>
+        <img id="userAvatar" alt="">
+        <span id="userName"></span>
+      </div>
+    </header>
+
+    <section class="hero" aria-labelledby="pageTitle">
+      <div class="hero-copy">
+        <span class="eyebrow"><span class="eyebrow-dot"></span> PROGRESO DE LA COMUNIDAD</span>
+        <h1 id="pageTitle">Tus logros, a tu ritmo.</h1>
+        <p id="pageDescription">Cada mensaje, nivel y momento compartido suma a tu historia en el servidor.</p>
+      </div>
+      <div class="hero-emblem" aria-hidden="true"><span>🏆</span><i></i></div>
+    </section>
+
+    <nav class="view-tabs" aria-label="Tipo de logros">
+      <button type="button" class="view-tab" data-view="me" aria-pressed="true"><span>♙</span> Mis logros</button>
+      <button type="button" class="view-tab" data-view="server" aria-pressed="false"><span>◈</span> Logros del servidor</button>
+    </nav>
+
+    <section class="server-picker" id="serverPicker" hidden>
+      <div class="picker-icon" aria-hidden="true">⌂</div>
+      <div class="picker-copy"><strong>Elige un servidor</strong><span>Verás los logros del servidor seleccionado.</span></div>
+      <label class="picker-select"><span class="sr-only">Servidor</span><select id="serverSelect" aria-label="Seleccionar servidor"></select><span aria-hidden="true">⌄</span></label>
+    </section>
+
+    <section class="stats-grid" id="stats" aria-label="Resumen" hidden></section>
+
+    <section class="toolbar" id="toolbar" hidden>
+      <label class="search-box"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="Buscar un logro…" autocomplete="off"><kbd>/</kbd></label>
+      <label class="filter-box"><span class="sr-only">Filtrar por categoría</span>
+        <select id="category"><option value="all">Todas las categorías</option></select>
+      </label>
+      <span class="result-count" id="resultCount"></span>
+    </section>
+
+    <section class="notice" id="notice" role="status" hidden></section>
+    <section class="achievement-grid" id="achievementGrid" aria-live="polite"></section>
+    <footer class="footer"><span>Kuboq</span><span>Tu aventura sigue sumando.</span></footer>
+  </main>
+</body>
+</html>

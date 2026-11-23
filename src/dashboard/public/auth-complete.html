@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#100d13">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Inicio de sesión · Kuboq</title>
+  <link rel="icon" href="/assets/brand/kuboq-logo.png" type="image/png">
+  <link rel="stylesheet" href="/assets/auth-complete.css?v=kuboq-1">
+  <script src="/assets/auth-complete.js?v=kuboq-1" defer></script>
+</head>
+<body>
+  <main class="auth-card">
+    <div class="brand"><span class="brand-mark"><img src="/assets/brand/kuboq-logo.png" alt=""></span><div><strong>Kuboq</strong><small>PANEL DE CONTROL</small></div></div>
+    <div id="auth-loading" class="auth-state" role="status"><div class="loading-ring" aria-hidden="true"></div><h1>Completando el acceso…</h1><p>Estamos comprobando tu sesión de Discord.</p></div>
+    <div id="auth-success" class="auth-state" hidden>
+      <div class="success-symbol" aria-hidden="true">✓</div>
+      <div class="eyebrow">DISCORD CONECTADO</div>
+      <h1>Sesión iniciada correctamente como:</h1>
+      <div class="account"><span class="account-avatar" id="account-avatar"><span id="avatar-fallback">24</span><img id="avatar-image" alt="Avatar de Discord" hidden></span><div class="account-name"><small>TU CUENTA DE DISCORD</small><strong id="account-handle"></strong><span id="account-display"></span></div><span class="account-check" aria-hidden="true">✓</span></div>
+      <p class="next-step">Ahora elige el servidor que quieres administrar en la ventana principal.</p>
+      <button class="primary" type="button" id="continue-button">Elegir servidor ↗</button>
+      <p class="close-note" id="close-note">Esta ventana se cerrará automáticamente.</p>
+    </div>
+    <div id="auth-error" class="auth-state" hidden role="alert"><div class="error-symbol" aria-hidden="true">!</div><div class="eyebrow">ACCESO NO COMPLETADO</div><h1>No se pudo iniciar sesión.</h1><p id="auth-error-text">Vuelve a intentarlo.</p><a class="primary" href="/auth/discord?popup=1">Reintentar con Discord ↗</a><button class="quiet" type="button" id="close-button">Cerrar ventana</button></div>
+    <footer><span class="online-dot"></span> Acceso seguro con Discord <span>·</span> Kuboq</footer>
+  </main>
+</body>
+</html>

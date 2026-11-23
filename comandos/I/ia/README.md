@@ -1,0 +1,29 @@
+# Inteligencia artificial
+
+Comando base: `/ia`
+
+## 1. /ia imagen
+
+Genera una imagen con IA a partir de un texto
+
+Permiso: Ninguno
+
+| Opción | Tipo | Obligatoria | Opciones fijas |
+|---|---|---|---|
+| prompt | texto | Sí | — |
+| estilo | texto | No | Sin estilo, Anime, Realista, Pixel art, Pintura al óleo, 3D, Cyberpunk, Fantasía, Minimalista |
+| formato | texto | No | Cuadrado, Horizontal, Vertical |
+| semilla | número entero | No | — |
+| canal | canal | No | — |
+
+## 2. /ia config
+
+Activa/desactiva la IA, cooldown y canal único (sin canal = cualquiera)
+
+Permiso: `ManageGuild`
+
+| Opción | Tipo | Obligatoria | Opciones fijas |
+|---|---|---|---|
+| estado | sí/no | No | — |
+| cooldown | número entero | No | — |
+| canal | canal | No | — |

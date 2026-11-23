@@ -1,0 +1,2 @@
+No declares tokens aquí. Todas las credenciales están en config.json.
+FadeHost puede establecer PORT y APP_URL automáticamente como datos de infraestructura.
