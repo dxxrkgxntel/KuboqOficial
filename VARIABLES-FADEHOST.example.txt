@@ -1,2 +1,17 @@
-No declares tokens aquí. Todas las credenciales están en config.json.
-FadeHost puede establecer PORT y APP_URL automáticamente como datos de infraestructura.
+Variables requeridas (FadeHost → Settings → Environment variables):
+DISCORD_TOKEN=
+DISCORD_CLIENT_ID=
+MONGODB_URI=
+MONGODB_DATABASE=club247
+DASHBOARD_CLIENT_SECRET=
+DASHBOARD_SESSION_SECRET=
+DASHBOARD_REDIRECT_URI=auto
+
+Opcionales:
+OPENAI_API_KEY=
+OPENAI_MODEL=gpt-image-1
+PEXELS_API_KEY=
+MUSIC_1_TOKEN=
+MUSIC_2_TOKEN=
+
+FadeHost asigna PORT automáticamente. APP_URL se asigna al activar la dirección web.

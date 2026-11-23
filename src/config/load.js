@@ -1,18 +1,16 @@
 'use strict';
-/** Configuración única para Windows local y FadeHost (sin .env).
- *  Las credenciales siempre se leen de config.json.
- *  FadeHost solo puede definir PORT y APP_URL como parámetros de infraestructura.
+/** Configuración para Windows local y hosting.
+ *  En local admite config.json; en FadeHost las credenciales pueden llegar por variables seguras.
  */
 const fs = require('node:fs');
 const path = require('node:path');
 const projectRoot = path.resolve(__dirname, '../..');
 const configPath = path.join(projectRoot, 'config.json');
-if (!fs.existsSync(configPath)) {
-  throw new Error('Falta config.json. Copia config.example.json a config.json y completa tus credenciales.');
+let cfg = {};
+if (fs.existsSync(configPath)) {
+  try { cfg = require(configPath); }
+  catch (error) { throw new Error(`No se pudo leer config.json: ${error.message}`); }
 }
-let cfg;
-try { cfg = require(configPath); }
-catch (error) { throw new Error(`No se pudo leer config.json: ${error.message}`); }
 if (!cfg || typeof cfg !== 'object' || Array.isArray(cfg)) throw new Error('config.json debe contener un objeto JSON.');
 const objectSetting = (key) => {
   if (cfg[key] == null) cfg[key] = {};
@@ -29,6 +27,28 @@ const identity = objectSetting('identity');
 const integrations = objectSetting('integrations');
 const music = objectSetting('music');
 const dashboard = objectSetting('dashboard');
+const envString = (...names) => {
+  for (const name of names) {
+    const value = process.env[name];
+    if (value != null && String(value).trim()) return String(value).trim();
+  }
+  return undefined;
+};
+const envOverride = (object, property, ...names) => {
+  const value = envString(...names);
+  if (value !== undefined) object[property] = value;
+};
+
+envOverride(discord, 'token', 'DISCORD_TOKEN', 'BOT_TOKEN', 'TOKEN');
+envOverride(discord, 'clientId', 'DISCORD_CLIENT_ID', 'CLIENT_ID');
+envOverride(mongodb, 'uri', 'MONGODB_URI', 'MONGO_URI');
+envOverride(mongodb, 'database', 'MONGODB_DATABASE', 'MONGODB_DB');
+envOverride(dashboard, 'clientSecret', 'DASHBOARD_CLIENT_SECRET');
+envOverride(dashboard, 'sessionSecret', 'DASHBOARD_SESSION_SECRET');
+envOverride(dashboard, 'redirectUri', 'DASHBOARD_REDIRECT_URI');
+envOverride(integrations, 'pexelsKey', 'PEXELS_API_KEY', 'PEXELS_KEY');
+envOverride(integrations, 'openaiKey', 'OPENAI_API_KEY');
+envOverride(integrations, 'imageModel', 'OPENAI_MODEL', 'IA_MODEL');
 
 discord.token = stringSetting(discord, 'token', 'discord.token');
 discord.clientId = stringSetting(discord, 'clientId', 'discord.clientId');
@@ -62,6 +82,13 @@ for (let i = 0; i < 5; i++) {
   player.token = stringSetting(player, 'token', `music.players[${i}].token`);
   if (player.enabled != null && typeof player.enabled !== 'boolean') throw new Error(`config.json: "music.players[${i}].enabled" debe ser true o false.`);
   player.enabled ??= false;
+  const playerToken = envString(`MUSIC_${i+1}_TOKEN`, `MUSIC_PLAYER_${i+1}_TOKEN`);
+  const playerEnabled = envString(`MUSIC_${i+1}_ENABLED`, `MUSIC_PLAYER_${i+1}_ENABLED`);
+  if (playerToken !== undefined) { player.token = playerToken; if (playerEnabled === undefined) player.enabled = true; }
+  if (playerEnabled !== undefined) {
+    if (!['true','1','yes','on','false','0','no','off'].includes(playerEnabled.toLowerCase())) throw new Error(`MUSIC_${i+1}_ENABLED debe ser true o false.`);
+    player.enabled = ['true','1','yes','on'].includes(playerEnabled.toLowerCase());
+  }
 }
 if (music.guildChannels != null && (typeof music.guildChannels !== 'object' || Array.isArray(music.guildChannels)))
   throw new Error('config.json: "music.guildChannels" debe ser un objeto.');

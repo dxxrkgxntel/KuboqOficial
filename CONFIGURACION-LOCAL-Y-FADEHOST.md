@@ -1,8 +1,8 @@
-# Kuboq — Windows local + FadeHost usando config.json
+# Kuboq — configuración local y despliegue en FadeHost
 
-El bot, la dashboard y los reproductores se configuran **exclusivamente en `config.json`**. No usa archivos `.env` ni necesita declarar tokens en las variables del panel de FadeHost. `config.json` está incluido con campos vacíos; **rellénalo de forma privada** antes de usarlo y **nunca lo publiques en GitHub o enlaces abiertos**. El `.gitignore` excluye `config.json`.
+En Windows puedes configurar el bot en `config.json`. En FadeHost puedes usar las variables privadas del panel; el cargador las acepta y mantiene `config.json` como alternativa. Si una variable y `config.json` tienen el mismo dato, la variable tiene prioridad. Nunca publiques tokens ni secretos en GitHub.
 
-## Configuración común (obligatoria)
+## Configuración local mediante `config.json`
 
 Abre `config.json` y configura:
 
@@ -19,7 +19,35 @@ Abre `config.json` y configura:
 - `music.ytDlpPath`: `auto` detecta Windows (`yt-dlp.exe` incluido) o Linux (`yt-dlp` en PATH); para Linux también puedes dar una ruta absoluta a un binario Linux.
 - `integrations.pexelsKey` e `integrations.openaiKey`: opcionales.
 
-La dashboard está protegida por OAuth2 de Discord. Sin `clientSecret`, `sessionSecret` y URL callback configurados no permitirá el inicio de sesión, aunque el bot pueda arrancar.
+La dashboard está protegida por OAuth2 de Discord. Para iniciar sesión, configura `clientSecret`, `sessionSecret` y la URL callback en `config.json` o mediante las variables de FadeHost indicadas abajo.
+
+## Variables de entorno para FadeHost
+
+Añade estas variables en FadeHost → bot → Settings → Environment variables. No incluyas comillas alrededor de los valores:
+
+```text
+DISCORD_TOKEN=token_del_bot
+DISCORD_CLIENT_ID=application_id_de_discord
+MONGODB_URI=mongodb+srv://usuario:clave@cluster/...
+MONGODB_DATABASE=club247
+DASHBOARD_CLIENT_SECRET=oauth_client_secret
+DASHBOARD_SESSION_SECRET=secreto_aleatorio_de_32_caracteres_o_mas
+DASHBOARD_REDIRECT_URI=auto
+```
+
+FadeHost asigna `PORT` automáticamente y, cuando activas una dirección web, también `APP_URL`; no añadas esas dos manualmente. Al crear un bot, FadeHost puede entregar el token como `DISCORD_TOKEN`. El proyecto también acepta `BOT_TOKEN` o `TOKEN`.
+
+Opcionales:
+
+```text
+OPENAI_API_KEY=...
+OPENAI_MODEL=gpt-image-1
+PEXELS_API_KEY=...
+MUSIC_1_TOKEN=...
+MUSIC_2_TOKEN=...
+```
+
+Los reproductores musicales aceptan `MUSIC_1_TOKEN` hasta `MUSIC_5_TOKEN`; se activan al añadir un token. También puedes usar `MUSIC_1_ENABLED=false` para desactivar uno. No declares variables de servicios que no usas.
 
 ## Iniciar en tu PC con Windows
 
@@ -33,16 +61,17 @@ Para escuchar desde otro dispositivo de tu red, configura el firewall y `dashboa
 
 ## Iniciar en FadeHost (Linux)
 
-1. Crea una aplicación Node.js **22+** con servicio web; sube el contenido del proyecto y edita su **`config.json`** usando el gestor de archivos de FadeHost. No subas la configuración privada a repositorios públicos.
-2. Deja `dashboard.redirectUri` en `auto` **si FadeHost proporciona `APP_URL`**; de lo contrario, coloca `https://TU-DOMINIO/auth/callback` en `dashboard.redirectUri`. Registra esa URL en Discord Developer Portal → OAuth2.
-3. FadeHost suele asignar el puerto mediante `PORT`; se admite **solo esa variable automática de infraestructura** aunque todos los tokens y demás ajustes se lean de `config.json`. Si FadeHost entrega `APP_URL`, se utiliza únicamente como callback automático cuando `dashboard.redirectUri` se deja vacío.
-4. Instala dependencias con `npm ci` e inicia con `npm start` (o `sh INICIAR-LINUX.sh`).
-5. Para reproducir música en un Linux sin `yt-dlp`, instala el binario Linux o colócalo en una ruta accesible y establece `music.ytDlpPath` a esa ruta. **El `.exe` incluido solo sirve para Windows**. `ffmpeg-static` aporta FFmpeg como dependencia.
-6. Abre `https://TU-DOMINIO/dashboard`.
+1. En FadeHost, crea un bot desde **Bots → Host a bot → Discord bot** y conecta el repositorio GitHub, o selecciona **Upload your code**. Activa una dirección web en el bot para publicar la dashboard. Puedes desplegar el repositorio sin `config.json` si añades las variables requeridas de arriba.
+2. Selecciona **Node.js 22** y configura `node index.js` como comando de inicio. FadeHost instala las dependencias según `package-lock.json`; no subas `node_modules`.
+3. Añade las variables requeridas en Settings → Environment variables. Genera el secreto de sesión localmente con `node -e "console.log(require('crypto').randomBytes(48).toString('hex'))"` y copia el resultado en `DASHBOARD_SESSION_SECRET`.
+4. Activa la dirección web de FadeHost y registra `https://TU-DOMINIO.fadehost.app/auth/callback` en Discord Developer Portal → OAuth2 → Redirects. Con `DASHBOARD_REDIRECT_URI=auto`, el proyecto crea el callback a partir de `APP_URL`.
+5. En MongoDB Atlas, permite la conexión desde FadeHost y verifica las credenciales de `MONGODB_URI`.
+6. La música en Linux necesita el ejecutable Linux `yt-dlp`; `yt-dlp.exe` solo sirve para Windows. El resto del bot y la dashboard pueden funcionar sin reproductores configurados.
+7. Abre `https://TU-DOMINIO.fadehost.app/dashboard`.
 
 ### Si cambias entre local y FadeHost
 
-Ambos pueden utilizar **el mismo `config.json`** si `dashboard.redirectUri` es `auto` y FadeHost proporciona `APP_URL`; registra **ambos callbacks** en Discord Developer Portal. Si FadeHost no proporciona `APP_URL`, configura manualmente la URL de FadeHost y utiliza copias privadas separadas de `config.json`. No debes utilizar a la vez el mismo token de Discord en dos instancias activas del mismo bot.
+En local puedes seguir usando `config.json` y en FadeHost las variables privadas. Registra ambos callbacks de OAuth2 si utilizas la dashboard en los dos lugares. No ejecutes a la vez dos instancias del mismo bot con el mismo token.
 
 ### Pruebas y seguridad
 

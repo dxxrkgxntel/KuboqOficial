@@ -1,0 +1,68 @@
+{
+  "discord": {
+    "token": "MTU3Mzk2NDk5MjIxMzAyODkzNQ.GKuyPp.PPskAGz0mw0g_rb_8iRh-uV3zHRn0jXnnVFH5o",
+    "clientId": "1573964992213028935"
+  },
+  "mongodb": {
+    "uri": "mongodb://club247base:chinitord1@ac-r0qix7b-shard-00-00.hd9qwxq.mongodb.net:27017,ac-r0qix7b-shard-00-01.hd9qwxq.mongodb.net:27017,ac-r0qix7b-shard-00-02.hd9qwxq.mongodb.net:27017/?ssl=true&replicaSet=atlas-f7xihr-shard-0&authSource=admin",
+    "database": "club247",
+    "importPath": "./db.json"
+  },
+  "identity": {
+    "name": "Kuboq",
+    "color": "#FF3159",
+    "description": "Bot multiservidor",
+    "logoUrl": "",
+    "defaultStatus": [
+      "Únete al Discord",
+      "Kuboq",
+      "Pasa una Navidad bonita 🎅🎄"
+    ],
+    "rotationSeconds": 15
+  },
+  "integrations": {
+    "pexelsKey": "",
+    "openaiKey": "",
+    "imageModel": "gpt-image-1"
+  },
+  "music": {
+    "ytDlpPath": "auto",
+    "panelImageUrl": "",
+    "accentColor": "#FF3159",
+    "guildChannels": {},
+    "players": [
+      {
+        "name": "Music 1",
+        "token": "MTU3Mzk2MDk1NDUwNzU2NzIzNQ.GDKFZg.L_39TgxZI_fD_jPl8rrLcYnIP1mA8N5_t2gazk",
+        "enabled": true
+      },
+      {
+        "name": "Music 2",
+        "token": "MTU3Mzk2MTAzODkxMzczMjY2OQ.Gy4d67.JmBA1-h7trg_4t9tCGXa2poS10ZYY8TigK1bio",
+        "enabled": true
+      },
+      {
+        "name": "Music 3",
+        "token": "MTU3Mzk2MTExMzYzOTMyMTc0MA.G1tnAv.iK2ZDWj_LhDVbGG90tuR-nZpGH1BpuAoXUJxcQ",
+        "enabled": true
+      },
+      {
+        "name": "Music 4",
+        "token": "",
+        "enabled": true
+      },
+      {
+        "name": "Music 5",
+        "token": "",
+        "enabled": true
+      }
+    ]
+  },
+  "dashboard": {
+    "port": 3000,
+    "redirectUri": "auto",
+    "clientSecret": "ckHFfwilcEHMe_l8tawe5wlVNzaCDMwb",
+    "sessionSecret": "6d099bb9bb19c13d08b67c88c2510c5e553d92e302e1bcca291c6bfc21ba43b953712439d00425d87c6d6d6b74634115",
+    "host": "0.0.0.0"
+  }
+}
